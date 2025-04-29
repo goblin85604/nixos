@@ -88,6 +88,7 @@
   environment.systemPackages = with pkgs; [
     neovim
     alacritty
+    vscode
     git
     wget
     keepassxc
