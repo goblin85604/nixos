@@ -95,6 +95,9 @@
     godot
   ];
 
+  # OpenSSH
+  services.openssh.enable = true;
+
   # Firewall
   networking.firewall.enable = true;
 
