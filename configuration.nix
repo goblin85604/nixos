@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, inputs, ... }:
 
 {
   imports =
@@ -10,7 +10,8 @@
   boot.loader.efi.canTouchEfiVariables = true;
 
   networking.hostName = "nixos";
-  # networking.wireless.enable = true;
+
+  nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
   # Enable networking
   networking.networkmanager.enable = true;
@@ -53,7 +54,7 @@
   services.printing.enable = true;
 
   # Enable sound with pipewire.
-  hardware.pulseaudio.enable = false;
+  services.pulseaudio.enable = false;
   security.rtkit.enable = true;
   services.pipewire = {
     enable = true;
@@ -90,9 +91,12 @@
     git
     wget
     keepassxc
+    godot
   ];
 
+  # Firewall
   networking.firewall.enable = true;
 
+  # System version
   system.stateVersion = "24.11";
 }
